@@ -17,7 +17,7 @@ exports.products_get_all = (req, res, next) => {
                         _id: doc._id,
                         request: {
                             type: 'GET',
-                            url: process.env.url + ':' + (process.env.PORT || 3000) + '/' + 'products/' + doc._id,
+                            url: process.env.URL + ':' + (process.env.PORT || 3000) + '/' + 'products/' + doc._id,
                         },
                     };
                 }),
@@ -51,7 +51,7 @@ exports.products_create_product = (req, res, next) => {
                     _id: result._id,
                     request: {
                         type: 'GET',
-                        url: process.env.url + ':' + (process.env.PORT || 3000) + '/' + 'products/' + result._id,
+                        url: process.env.URL + ':' + (process.env.PORT || 3000) + '/' + 'products/' + result._id,
                     },
                 },
             });
@@ -74,7 +74,7 @@ exports.products_get_product = (req, res, next) => {
                     product: doc,
                     request: {
                         type: 'GET',
-                        url: process.env.url + ':' + (process.env.PORT || 3000) + '/' + 'products/' + doc._id,
+                        url: process.env.URL + ':' + (process.env.PORT || 3000) + '/' + 'products/' + doc._id,
                     },
                 });
             } else {
@@ -106,7 +106,7 @@ exports.products_update_product = (req, res, next) => {
                 message: 'Product updated',
                 request: {
                     type: 'GET',
-                    url: process.env.url + ':' + (process.env.PORT || 3000) + '/' + 'products/' + id,
+                    url: process.env.URL + ':' + (process.env.PORT || 3000) + '/' + 'products/' + id,
                 },
             });
         })
@@ -128,7 +128,7 @@ exports.products_delete = (req, res, next) => {
                 message: 'Product deleted',
                 request: {
                     type: 'POST',
-                    url: process.env.url + ':' + (process.env.PORT || 3000) + '/' + 'products/',
+                    url: process.env.URL + ':' + (process.env.PORT || 3000) + '/' + 'products/',
                     body: {
                         name: 'String',
                         price: 'Number',

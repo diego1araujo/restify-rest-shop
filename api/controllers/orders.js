@@ -18,7 +18,7 @@ exports.orders_get_all = (req, res, next) => {
                         quantity: doc.quantity,
                         request: {
                             type: 'GET',
-                            url: process.env.url + ':' + (process.env.PORT || 3000) + '/' + 'orders/' + doc._id,
+                            url: process.env.URL + ':' + (process.env.PORT || 3000) + '/' + 'orders/' + doc._id,
                         },
                     };
                 }),
@@ -56,7 +56,7 @@ exports.orders_create_order = (req, res, next) => {
                 },
                 request: {
                     type: 'GET',
-                    url: process.env.url + ':' + (process.env.PORT || 3000) + '/' + 'orders/' + result._id,
+                    url: process.env.URL + ':' + (process.env.PORT || 3000) + '/' + 'orders/' + result._id,
                 },
             });
         }).catch(err => {
@@ -81,7 +81,7 @@ exports.orders_get_order = (req, res, next) => {
                 order: order,
                 request: {
                     type: 'GET',
-                    url: process.env.url + ':' + (process.env.PORT || 3000) + '/' + 'orders/',
+                    url: process.env.URL + ':' + (process.env.PORT || 3000) + '/' + 'orders/',
                 },
             });
         }).catch(err => {
@@ -100,7 +100,7 @@ exports.orders_delete_order = (req, res, next) => {
                 message: 'Order deleted',
                 request: {
                     type: 'POST',
-                    url: process.env.url + ':' + (process.env.PORT || 3000) + '/' + 'orders/',
+                    url: process.env.URL + ':' + (process.env.PORT || 3000) + '/' + 'orders/',
                     body: {
                         productId: 'ID',
                         quantity: 'Number',

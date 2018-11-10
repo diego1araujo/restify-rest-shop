@@ -49,7 +49,7 @@ exports.user_login = (req, res, next) => {
         .then(user => {
             if (user.length < 1) {
                 return res.status(401).json({
-                    message: 'Auth failed',
+                    message: 'Invalid Credentials',
                 });
             }
 

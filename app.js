@@ -8,6 +8,8 @@ const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/users');
 
+require('dotenv').config();
+
 mongoose.connect('mongodb://localhost:27017/' + process.env.MONGO_DB, {
     useCreateIndex: true,
     useNewUrlParser: true,

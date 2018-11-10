@@ -1,8 +1,0 @@
-{
-    "env": {
-        "NODE_ENV": "dev",
-        "URL": "http://localhost",
-        "MONGO_DB": "node-shop",
-        "JWT_KEY": "aY9MYcaSVcJG7KbhI7JwOEmGK"
-    }
-}

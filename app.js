@@ -19,9 +19,11 @@ mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+// Cors
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -35,10 +37,15 @@ app.use((req, res, next) => {
     next();
 });
 
-// Routes which should handle requests
+// Routes
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
 app.use('/user', userRoutes);
+app.all('*', (req, res) => {
+    res.status(404).json({
+        message: 'The request could not be satisfied :(',
+    });
+});
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

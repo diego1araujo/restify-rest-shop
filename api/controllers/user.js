@@ -43,6 +43,13 @@ exports.user_signup = (req, res, next) => {
 };
 
 exports.user_login = (req, res, next) => {
+    if (req.body.email === undefined || req.body.email == ''
+        || req.body.password === undefined || req.body.password == '') {
+        return res.status(500).json({
+            message: 'Empty fields',
+        });
+    }
+
     User.find({
         email: req.body.email,
     }).exec()
@@ -56,16 +63,16 @@ exports.user_login = (req, res, next) => {
             bcrypt.compare(req.body.password, user[0].password, (err, result) => {
                 if (err) {
                     return res.status(401).json({
-                        message: 'Auth failed',
+                        message: 'Invalid Credentials',
                     });
                 }
 
                 if (result) {
                     const token = jwt.sign({
                         email: user[0].email,
-                        userId: user[0]._id
+                        userId: user[0]._id,
                     }, process.env.JWT_KEY, {
-                        expiresIn: '1h',
+                        expiresIn: '5h',
                     });
 
                     return res.status(200).json({
@@ -75,7 +82,7 @@ exports.user_login = (req, res, next) => {
                 }
 
                 res.status(401).json({
-                    message: 'Auth failed',
+                    message: 'Invalid Credentials',
                 });
             });
         }).catch(err => {
